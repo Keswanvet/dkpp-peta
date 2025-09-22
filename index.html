@@ -10,28 +10,10 @@
       height: 100%;
       width: 100%;
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      overflow: hidden; /* hilangkan scroll */
+      overflow: hidden; 
     }
-    #dropdownContainer {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      background: rgba(255,255,255,0.9);
-      padding: 10px 20px;
-      border-radius: 10px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    }
-    select {
-      padding: 12px 18px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      width: 300px;
-    }
+
+
     iframe {
       position: absolute;
       top: 0;
@@ -40,12 +22,49 @@
       height: 100%;
       border: none;
     }
+
+
+    #dropdownContainer {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 15px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    select {
+      padding: 10px 15px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      min-width: 200px;
+    }
+
+
+    @media (max-width: 600px) {
+      #dropdownContainer {
+        top: 10px;
+        right: 10px;
+        padding: 5px 8px;
+      }
+      select {
+        padding: 6px 8px;
+        font-size: 12px;
+        min-width: 120px;
+      }
+    }
   </style>
 </head>
 <body>
 
+
   <div id="dropdownContainer">
     <label for="penyakit">Pilih Penyakit:</label>
+    <br/>
     <select id="penyakit" onchange="tampilkanPeta()">
       <option value="">-- Pilih Peta --</option>
       <option value="peta-brucellosis.html">Brucellosis</option>
@@ -58,6 +77,7 @@
     </select>
   </div>
 
+
   <iframe id="petaFrame" src=""></iframe>
 
   <script>
@@ -66,7 +86,7 @@
       var url = select.value;
       var iframe = document.getElementById("petaFrame");
       if(url) {
-        iframe.src = url;  // tampilkan peta full-frame
+        iframe.src = url; 
       } else {
         iframe.src = "";
       }
