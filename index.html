@@ -13,7 +13,6 @@
       overflow: hidden; 
     }
 
-
     iframe {
       position: absolute;
       top: 0;
@@ -22,7 +21,6 @@
       height: 100%;
       border: none;
     }
-
 
     #dropdownContainer {
       position: absolute;
@@ -44,7 +42,6 @@
       min-width: 200px;
     }
 
-
     @media (max-width: 600px) {
       #dropdownContainer {
         top: 10px;
@@ -61,7 +58,6 @@
 </head>
 <body>
 
-
   <div id="dropdownContainer">
     <label for="penyakit">Pilih Penyakit:</label>
     <br/>
@@ -76,19 +72,26 @@
     </select>
   </div>
 
-
   <iframe id="petaFrame" src=""></iframe>
 
   <script>
+    // Fungsi tampilkan peta
     function tampilkanPeta() {
       var select = document.getElementById("penyakit");
       var url = select.value;
       var iframe = document.getElementById("petaFrame");
       if(url) {
-        iframe.src = url; 
+        iframe.src = url;
       } else {
         iframe.src = "";
       }
+    }
+
+    // Saat halaman load, langsung tampilkan PMK
+    window.onload = function() {
+      var select = document.getElementById("penyakit");
+      select.value = "peta-penyakit-mulut-dan-kuku.html"; // default PMK
+      tampilkanPeta(); // panggil fungsi agar iframe langsung menampilkan peta
     }
   </script>
 
