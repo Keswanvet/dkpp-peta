@@ -4,52 +4,61 @@
   <meta charset="UTF-8">
   <title>Index Peta Penyakit Hewan</title>
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
       font-family: Arial, sans-serif;
       background: #f9f9f9;
-      margin: 40px;
-      text-align: center;
+      overflow: hidden; /* hilangkan scroll */
     }
-    h1 {
-      color: #333;
+    #dropdownContainer {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(255,255,255,0.9);
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     }
     select {
       padding: 12px 18px;
       font-size: 16px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      margin-top: 20px;
       cursor: pointer;
       width: 300px;
     }
     iframe {
-      margin-top: 30px;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: 1200px;
-      height: 600px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <h1>PHMS Jabar</h1>
 
-  <label for="penyakit">Pilih Penyakit:</label>
-  <br/>
-  <select id="penyakit" onchange="tampilkanPeta()">
-    <option value="">-- Pilih Peta --</option>
-    <option value="peta-brucellosis.html">Brucellosis</option>
-    <option value="peta-rabies.html">Rabies</option>
-    <option value="peta-lumpy-skin-disease.html">Lumpy Skin Disease</option>
-    <option value="peta-penyakit-mulut-dan-kuku.html">Penyakit Mulut dan Kuku</option>
-    <option value="peta-bovine-ephemeral-fever.html">Bovine Ephemeral Fever</option>
-    <option value="peta-orf.html">Orf</option>
-    <option value="peta-avian-influenza---hpai.html">Avian Influenza - HPAI</option>
-  </select>
+  <div id="dropdownContainer">
+    <label for="penyakit">Pilih Penyakit:</label>
+    <select id="penyakit" onchange="tampilkanPeta()">
+      <option value="">-- Pilih Peta --</option>
+      <option value="peta-brucellosis.html">Brucellosis</option>
+      <option value="peta-rabies.html">Rabies</option>
+      <option value="peta-lumpy-skin-disease.html">Lumpy Skin Disease</option>
+      <option value="peta-penyakit-mulut-dan-kuku.html">Penyakit Mulut dan Kuku</option>
+      <option value="peta-bovine-ephemeral-fever.html">Bovine Ephemeral Fever</option>
+      <option value="peta-orf.html">Orf</option>
+      <option value="peta-avian-influenza---hpai.html">Avian Influenza - HPAI</option>
+    </select>
+  </div>
 
-  <iframe id="petaFrame" src="" frameborder="0"></iframe>
+  <iframe id="petaFrame" src=""></iframe>
 
   <script>
     function tampilkanPeta() {
@@ -57,11 +66,12 @@
       var url = select.value;
       var iframe = document.getElementById("petaFrame");
       if(url) {
-        iframe.src = url;  
+        iframe.src = url;  // tampilkan peta full-frame
       } else {
-        iframe.src = ""; 
+        iframe.src = "";
       }
     }
   </script>
+
 </body>
 </html>
