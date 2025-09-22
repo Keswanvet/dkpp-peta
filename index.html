@@ -8,45 +8,46 @@
       font-family: Arial, sans-serif;
       background: #f9f9f9;
       margin: 40px;
+      text-align: center;
     }
     h1 {
-      text-align: center;
       color: #333;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      max-width: 400px;
-      margin: 40px auto;
-    }
-    li {
-      margin: 12px 0;
-    }
-    a {
-      display: block;
+    select {
       padding: 12px 18px;
-      background: #4CAF50;
-      color: white;
-      text-decoration: none;
+      font-size: 16px;
       border-radius: 8px;
-      transition: background 0.3s;
-      text-align: center;
-    }
-    a:hover {
-      background: #45a049;
+      border: 1px solid #ccc;
+      margin-top: 40px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <h1>PHMS Jabar</h1>
-  <ul>
-  <li><a href="peta-brucellosis.html">Peta Brucellosis</a></li>
-  <li><a href="peta-rabies.html">Peta Rabies</a></li>
-  <li><a href="peta-lumpy-skin-disease.html">Peta Lumpy Skin Disease</a></li>
-  <li><a href="peta-penyakit-mulut-dan-kuku.html">Peta Penyakit Mulut dan Kuku</a></li>
-  <li><a href="peta-bovine-ephemeral-fever.html">Peta Bovine Ephemeral Fever</a></li>
-  <li><a href="peta-orf.html">Peta Orf</a></li>
-  <li><a href="peta-avian-influenza---hpai.html">Avian Influenza - HPAI</a></li>
-  </ul>
+
+  <label for="penyakit">Pilih Penyakit:</label>
+  <br/>
+  <select id="penyakit" onchange="bukaPeta()">
+    <option value="">-- Pilih Peta --</option>
+    <option value="peta-brucellosis.html">Brucellosis</option>
+    <option value="peta-rabies.html">Rabies</option>
+    <option value="peta-lumpy-skin-disease.html">Lumpy Skin Disease</option>
+    <option value="peta-penyakit-mulut-dan-kuku.html">Penyakit Mulut dan Kuku</option>
+    <option value="peta-bovine-ephemeral-fever.html">Bovine Ephemeral Fever</option>
+    <option value="peta-orf.html">Orf</option>
+    <option value="peta-avian-influenza---hpai.html">Avian Influenza - HPAI</option>
+  </select>
+
+  <script>
+    function bukaPeta() {
+      var select = document.getElementById("penyakit");
+      var url = select.value;
+      if(url) {
+        window.location.href = url; // buka halaman peta yang dipilih
+      }
+    }
+  </script>
 </body>
 </html>
+
