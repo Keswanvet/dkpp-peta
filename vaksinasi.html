@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Peta Vaksinasi</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: Arial, sans-serif; }
+    iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    #dropdownContainer {
+      position: absolute; top: 20px; right: 20px; z-index: 1000;
+      background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="dropdownContainer">
+    <label>Pilih Peta Vaksinasi:</label>
+    <select id="vaksinasi" onchange="tampilkanPeta()">
+      <option value="peta-vaksinasi/Vaksinasi-penyakit-mulut-dan-kuku.html">Vaksinasi PMK</option>
+      <option value="peta-vaksinasi/Vaksinasi-lumpy-skin-disease.html">Vaksinasi LSD</option>
+    </select>
+  </div>
+  <iframe id="petaFrame"></iframe>
+  <script>
+    function tampilkanPeta() {
+      document.getElementById("petaFrame").src = document.getElementById("vaksinasi").value;
+    }
+    window.onload = tampilkanPeta;
+  </script>
+</body>
+</html>

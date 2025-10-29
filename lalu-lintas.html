@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Lalu Lintas Ternak</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: Arial, sans-serif; }
+    iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    #dropdownContainer {
+      position: absolute; top: 20px; right: 20px; z-index: 1000;
+      background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="dropdownContainer">
+    <label>Pilih Statistik:</label>
+    <select id="lintas" onchange="tampilkanPeta()">
+      <option value="sv-masuk/sv-masuk-ekor.html">Masuk - Ekor</option>
+      <option value="sv-masuk/sv-masuk-liter.html">Masuk - Liter</option>
+      <option value="sv-masuk/sv-masuk-ton.html">Masuk - Ton</option>
+      <option value="sv-keluar/sv-keluar-ekor.html">Keluar - Ekor</option>
+      <option value="sv-keluar/sv-keluar-liter.html">Keluar - Liter</option>
+      <option value="sv-keluar/sv-keluar-ton.html">Keluar - Ton</option>
+    </select>
+  </div>
+  <iframe id="petaFrame"></iframe>
+  <script>
+    function tampilkanPeta() {
+      document.getElementById("petaFrame").src = document.getElementById("lintas").value;
+    }
+    window.onload = tampilkanPeta;
+  </script>
+</body>
+</html
