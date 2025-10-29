@@ -2,34 +2,40 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Lalu Lintas Ternak</title>
+  <title>Peta Lalu Lintas Hewan</title>
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: Arial, sans-serif; }
+    html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; font-family: Arial, sans-serif; }
     iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
     #dropdownContainer {
-      position: absolute; top: 20px; right: 20px; z-index: 1000;
-      background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px;
+      position: absolute; top: 50%; right: 20px; transform: translateY(-50%);
+      z-index: 1000; background: rgba(255,255,255,0.92); padding: 10px 15px; 
+      border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+    label { font-weight: bold; font-size: 14px; display: block; margin-bottom: 6px; }
+    select { padding: 8px 12px; font-size: 14px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer; min-width: 220px; }
+    @media (max-width: 600px) {
+      #dropdownContainer { right: 5px; padding: 6px 8px; border-radius: 8px; }
+      label { font-size: 10px; }
+      select { padding: 3px 6px; font-size: 10px; min-width: 100px; appearance: none; -webkit-appearance: none; -moz-appearance: none; }
     }
   </style>
 </head>
 <body>
+  <iframe id="petaFrame"></iframe>
   <div id="dropdownContainer">
-    <label>Pilih Statistik:</label>
-    <select id="lintas" onchange="tampilkanPeta()">
-      <option value="sv-masuk/sv-masuk-ekor.html">Masuk - Ekor</option>
-      <option value="sv-masuk/sv-masuk-liter.html">Masuk - Liter</option>
-      <option value="sv-masuk/sv-masuk-ton.html">Masuk - Ton</option>
-      <option value="sv-keluar/sv-keluar-ekor.html">Keluar - Ekor</option>
-      <option value="sv-keluar/sv-keluar-liter.html">Keluar - Liter</option>
-      <option value="sv-keluar/sv-keluar-ton.html">Keluar - Ton</option>
+    <label>Pilih Data Lalu Lintas:</label>
+    <select id="lalu" onchange="tampilkanPeta()">
+      <option value="sv-masuk/sv-masuk-ekor.html">Masuk (Ekor)</option>
+      <option value="sv-masuk/sv-masuk-liter.html">Masuk (Liter)</option>
+      <option value="sv-masuk/sv-masuk-ton.html">Masuk (Ton)</option>
+      <option value="sv-keluar/sv-keluar-ekor.html">Keluar (Ekor)</option>
+      <option value="sv-keluar/sv-keluar-liter.html">Keluar (Liter)</option>
+      <option value="sv-keluar/sv-keluar-ton.html">Keluar (Ton)</option>
     </select>
   </div>
-  <iframe id="petaFrame"></iframe>
   <script>
-    function tampilkanPeta() {
-      document.getElementById("petaFrame").src = document.getElementById("lintas").value;
-    }
+    function tampilkanPeta() { document.getElementById("petaFrame").src = document.getElementById("lalu").value; }
     window.onload = tampilkanPeta;
   </script>
 </body>
-</html
+</html>
